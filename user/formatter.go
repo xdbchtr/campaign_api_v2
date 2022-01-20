@@ -8,6 +8,10 @@ type UserFormatter struct {
 	Token      string `json:"token"`
 }
 
+type EmailFormatter struct {
+	EmailAvailability bool `json:"email_availability"`
+}
+
 func FormatUser(user User, token string) UserFormatter {
 	formatter := UserFormatter{
 		ID:         user.ID,
@@ -16,5 +20,13 @@ func FormatUser(user User, token string) UserFormatter {
 		Email:      user.Email,
 		Token:      token,
 	}
+	return formatter
+}
+
+func FormatEmail(email bool) EmailFormatter {
+	formatter := EmailFormatter{
+		EmailAvailability: email,
+	}
+
 	return formatter
 }
